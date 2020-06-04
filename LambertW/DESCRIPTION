@@ -8,7 +8,7 @@ Authors@R:
            family = "Goerg",
            role = c("aut", "cre"),
            email = "im@gmge.org")
-URL: http://www.gmge.org http://arxiv.org/abs/0912.4554
+URL: https://github.com/gmgeorg/LambertW http://arxiv.org/abs/0912.4554
     http://arxiv.org/abs/1010.2265 http://arxiv.org/abs/1602.02200
 Description: Lambert W x F distributions are a generalized framework to analyze
     skewed, heavy-tailed data. It is based on an input/output system, where the
