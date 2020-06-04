@@ -9,8 +9,8 @@ qLambertW <- function(p, distname = NULL, theta = NULL, beta = NULL, gamma = 0,
   
   stopifnot(xor(is.null(distname), is.null(input.u)))
   
-  if (p < 0 || p > 1) {
-    stop("Probability 'p' must lie in [0, 1].")
+  if (any(p < 0 | p > 1)) {
+    stop("Probability vector 'p' must lie in [0, 1].")
   }
   
   if (is.null(theta)) {

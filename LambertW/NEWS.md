@@ -4,10 +4,17 @@
 
 ## Future TODOs
 
-* **knitr** vignettes will be added in upcoming releases.
+* **knitr** more vignettes will be added in upcoming releases.
 * always: add more distributions by default
 * eventually convert the Lambert W toolkit to reference classes, rather than S3
   classes
+
+## v0.6.6
+
+* fixed CRAN check `WARNINGS` (thanks to Kurt Hornik for help on resolving Rcpp build errors)
+* fixed zero-division bug in `get_initial_tau()` (happened when `mad(y) = 0` -- which can happen
+  for data that has majority of values fall on the same exact value)
+* added a introduction vignette
 
 ## v0.6.4
 

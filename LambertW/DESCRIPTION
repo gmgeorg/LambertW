@@ -39,6 +39,7 @@ Suggests:
     nortest,
     numDeriv,
     testthat,
+    data.table,
     moments,
     knitr,
     vars,

@@ -10,10 +10,14 @@ get_initial_tau <- function(y, type = c("h", "hh", "s"), location.family = TRUE)
   
   type <- match.arg(type)
   
+  # Estimate sigma_x using robust estimate as MAD(); to avoid zero
+  # division errors add a small (data-driven) epsilon based on 1/1000-th of standard
+  # deviation of data.
+  sigma_x_robust <- mad(y) + 1. / 1e3 * sd(y)
   if (location.family) {
-    tau.init <- c(mu_x = median(y), sigma_x = mad(y), alpha = 1, gamma = 0, delta = 0)
+    tau.init <- c(mu_x = median(y), sigma_x = sigma_x_robust, alpha = 1, gamma = 0, delta = 0)
   } else {
-    tau.init <- c(mu_x = 0, sigma_x = mad(y), alpha = 1, gamma = 0, delta = 0)
+    tau.init <- c(mu_x = 0, sigma_x = sigma_x_robust, alpha = 1, gamma = 0, delta = 0)
   }
   z.init <- (y - tau.init["mu_x"]) / tau.init["sigma_x"]
 

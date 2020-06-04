@@ -30,11 +30,10 @@ Related posts:
   
 One advantage over Cauchy or student-t distribution with fixed degrees of freedom is that the tail parameters can be estimated from the data -- so you can let the data decide what moments exist.  Moreover the Lambert W x F framework allows you to transform your data and remove skewness / heavy-tails.   Itt is important to note though that OLS does not require Normality of $y$ or $X$.  However, for your EDA it might be worthwhile.
 
-Here is an example of Lambert W x Gaussian estimates applied to equity fund returns.
+Here is an example of Lambert W x Gaussian estimates applied to stock market data.
 
-```{r equity-funds}
-library(fEcofin)
-ret <- ts(equityFunds[, -1] * 100)
+```{r eu-stock-markets}
+ret <- diff(log(EuStockMarkets)) * 100
 plot(ret)
 ```
 
@@ -55,9 +54,9 @@ estimator (`IGMM`).
 ```{r gaussianize-returns}
 library(LambertW)
 ret.gauss <- Gaussianize(ret, type = "h", method = "IGMM")
-colnames(ret.gauss) <- gsub(".X", "", colnames(ret.gauss))
+colnames(ret.gauss) <- gsub("\\.X", "", colnames(ret.gauss))
 
-plot(ts(ret.gauss))
+plot(ret.gauss)
 ```
 
 The time series plots show much fewer tails and also more stable variation over time (not constant though).  Computing the metrics again on the Gaussianized time series yields:
@@ -72,14 +71,14 @@ The `IGMM` algorithm achieved exactly what it was set forth to do: transform the
 
 ## Simple bivariate regression
 
-To consider the effect of Gaussianization on OLS consider predicting "EASTEU" return from "INDIA" returns and vice versa.  Even though we are looking at same day returns between $r_{EASTEU, t}$ on $r_{INDIA,t}$ (no lagged variables), it still provides value for a stock market prediction given the 6h+ time difference between India and Europe.
+To consider the effect of Gaussianization on OLS consider predicting "FTSE" return from "DAX" returns and vice versa.
 
-```{r INDIA-easteu, fig.width = 16, fig.height = 8}
+```{r DAX-FTSE, fig.width = 16, fig.height = 8}
 layout(matrix(1:2, ncol = 2, byrow = TRUE))
-plot(ret[, "INDIA"], ret[, "EASTEU"])
-grid()
-plot(ret.gauss[, "INDIA"], ret.gauss[, "EASTEU"])
-grid()
+plot(ret[, "FTSE"], ret[, "DAX"])
+# grid()
+plot(ret.gauss[, "DAX"], ret.gauss[, "FTSE"])
+# grid()
 
 ```
 The left scatterplot of the original series shows that the strong outliers did not occur at the same days, but at different times in India and Europe; other than that it is not clear if the data cloud in the center supports no correlation or negative/positive dependency.  Since outliers strongly affect variance and correlation estimates, it is worthwhile to look at the dependency with heavy tails removed (right scatterplot).  Here the patterns are much more clear and the positive relation between India and Eastern Europe market becomes apparent.
@@ -87,9 +86,9 @@ The left scatterplot of the original series shows that the strong outliers did n
 
 ```{r fit-models, include = TRUE, eval = FALSE}
 # try these models on your own
-mod <- lm(EASTEU ~ INDIA * CHINA, data = ret)
-mod.robust <- rlm(EASTEU ~ INDIA, data = ret)
-mod.gauss <- lm(EASTEU ~ INDIA, data = ret.gauss)
+mod <- lm(FTSE ~ DAX + SMI + CAC, data = ret)
+mod.robust <- rlm(FTSE ~ DAX + SMI + CAC, data = ret)
+mod.gauss <- lm(FTSE ~ DAX + SMI + CAC, data = ret.gauss)
 
 summary(mod)
 summary(mod.robust)
@@ -98,12 +97,12 @@ summary(mod.gauss)
 
 ## Granger causality
 
-A Granger causality test based on a  $VAR(5)$ model (I use $p = 5$ to capture the week effect of daily trades) for "EASTEU" and "INDIA" rejects "no Granger causality" for either direction.
+A Granger causality test based on a  $VAR(5)$ model (I use $p = 5$ to capture the week effect of daily trades) for "DAX" and "CAX" rejects "no Granger causality" for DAX --> CAC direction.
 ```{r vars-ret}
 library(vars)
-mod.vars <- vars::VAR(ret[, c("EASTEU", "INDIA")], p = 5)
-causality(mod.vars, "INDIA")$Granger
-causality(mod.vars, "EASTEU")$Granger
+mod.vars <- vars::VAR(ret[, c("DAX", "CAC")], p = 6)
+causality(mod.vars, "DAX")$Granger
+causality(mod.vars, "CAC")$Granger
 
 ```
 
@@ -111,35 +110,10 @@ However, for the Gaussianized data the answer is different!  Here the test can *
 
 
 ```{r vars-ret-gauss}
-mod.vars.gauss <- vars::VAR(ret.gauss[, c("EASTEU", "INDIA")], p = 5)
-causality(mod.vars.gauss, "INDIA")$Granger
-causality(mod.vars.gauss, "EASTEU")$Granger
+mod.vars.gauss <- vars::VAR(ret.gauss[, c("DAX", "CAC")], p = 6)
+causality(mod.vars.gauss, "DAX")$Granger
+causality(mod.vars.gauss, "CAC")$Granger
 ```
 
 
-Note that it is not clear to me which one is the *right* answer (if any), but it's an interesting observation to make.  Needless to say that this entire Causality testing is contingent on the $VAR(5)$ being the correct model -- which it is most likely not; but I think it serves well for illustratiton.
-
-
-# fitdistr among Cauchy / Student-T / Normal distributions in R
-[Post here](http://stats.stackexchange.com/questions/146026/fitdistr-among-cauchy-student-t-normal-distributions-in-r#comment363074_146026)
-
-```{r wd}
-data.path <- "~/Dropbox/LambertW_roxygen/vignettes_tmp/data/"
-```
-
-```{r read-data}
-fname <- "F-F_Research_Data_Factors_daily.CSV"
-library(data.table)
-ret <- fread(file.path(data.path, fname), sep = ",", header = TRUE,
-             skip = 4)
-ret[, date := as.Date(as.character(V1), "%Y%m%d")]
-ret[, V1 := NULL]
-ret
-```
-
-```{r lambertw}
-library(LambertW)
-
-mod.mle <- MLE_LambertW(ret[, SMB], type = "h", distname = "normal")
-plot(mod.mle)
-```
+It is not clear to me which one is the *right* answer (if any), but it's an interesting observation to make.  Needless to say that this entire Causality testing is contingent on the $VAR(6)$ being the correct model -- which it is most likely not; but I think it serves well for illustratiton.
