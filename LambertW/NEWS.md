@@ -1,4 +1,4 @@
-# LambertW Update History
+# LambertW Release Notes
 
 * only complete starting with version 0.2.9.7
 
@@ -11,7 +11,7 @@
 
 ## v0.6.6
 
-* moved code to `https://github.com/gmgeorg/LambertW`
+* moved code to [https://github.com/gmgeorg/LambertW](https://github.com/gmgeorg/LambertW)
 * fixed CRAN check `WARNINGS` (thanks to Kurt Hornik for help on resolving Rcpp build errors)
 * fixed zero-division bug in `get_initial_tau()` (happened when `mad(y) = 0` -- which can happen
   for data that has majority of values fall on the same exact value)
