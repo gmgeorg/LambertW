@@ -26,7 +26,7 @@
 #' @export
 #' @examples
 #' 
-#' 
+#' \dontrun{
 #' # skewed
 #' yy <- rLambertW(n = 500, theta = list(delta = c(0.1, 0.25), beta = c(2, 1)), 
 #'                 distname = "normal")
@@ -36,7 +36,6 @@
 #' test_symmetry(fit.ml, "LR")
 #' test_symmetry(fit.ml, "Wald")
 #' 
-#' \dontrun{
 #' # symmetric 
 #' yy <- rLambertW(n = 500, theta = list(delta = c(0.2, 0.2), beta = c(2, 1)), 
 #'                 distname = "normal")
