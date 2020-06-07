@@ -8,7 +8,7 @@
 * always: add more distributions by default
 * convert Lambert W toolkit to reference classes, rather than S3 classes
 
-## v0.6.6
+## v0.6.5
 
 * moved code to [https://github.com/gmgeorg/LambertW](https://github.com/gmgeorg/LambertW)
 * fixed CRAN check `WARNINGS` (thanks to Kurt Hornik for help on resolving Rcpp build errors)
