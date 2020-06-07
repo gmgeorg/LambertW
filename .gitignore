@@ -1,0 +1,22 @@
+# Ignore everything
+/*
+
+# Fill back in what you shouldn't ignore.
+!README.md
+!.gitignore
+!/R
+!/src
+!/man
+!/data
+!/inst
+!/tests
+!/vignettes
+!DESCRIPTION
+!NAMESPACE
+!NEWS.md
+
+# Ignore specific files
+*~
+*.Rhistory
+/tests/testthat/Rplots.pdf
+
