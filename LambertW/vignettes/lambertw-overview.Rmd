@@ -19,9 +19,11 @@ library(data.table)
 
 
 # Gigantic kurtosis
+
 [Post here](http://stats.stackexchange.com/questions/34565/gigantic-kurtosis)
 
-Have a look at [heavy-tail Lambert W x F](http://www.hindawi.com/journals/tswj/aa/909231/) or [skewed Lambert W x F ](http://projecteuclid.org/euclid.aoas/1318514301) distributions a try (disclaimer: I am the author). In R they are implemented in the [**LambertW**](http://cran.r-project.org/web/packages/LambertW/) package.
+Have a look at [heavy-tail Lambert W x F](http://www.hindawi.com/journals/tswj/aa/909231/)
+ or [skewed Lambert W x F ](http://projecteuclid.org/euclid.aoas/1318514301) distributions a try.
 
 Related posts:
 
