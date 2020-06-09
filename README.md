@@ -3,12 +3,7 @@
 This is the github repo for the **LambertW** R package [hosted on
 CRAN](https://CRAN.R-project.org/package=LambertW). 
 
-Current version on CRAN is `0.6.4`. The version here is an update to `0.6.5` --
-not yet pushed to CRAN as I ran into `Rcpp` issues related to the `useDynLib`
-NAMESPACE issues ([issue here](https://github.com/gmgeorg/LambertW/issues/1))
-
-Once this is resolved I will push this to CRAN again (pending unit tests passing
-after Rcpp fixes).
+Current version on CRAN is `0.6.5` updated on June 8, 2020 -- reflected in repo here.  See commit history for any changes after the `0.6.5` update.
 
 
 ## Installation & usage
