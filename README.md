@@ -1,5 +1,8 @@
 # LambertW R package
 
+[![](https://cranlogs.r-pkg.org/badges/LambertW)](https://cran.r-project.org/package=LambertW)
+
+
 This is the github repo for the **LambertW** R package [hosted on
 CRAN](https://CRAN.R-project.org/package=LambertW). 
 
