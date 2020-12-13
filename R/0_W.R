@@ -16,8 +16,8 @@
 #'     principal (\code{branch = 0} (default)) and non-principal branch
 #'     (\code{branch = -1}) solution.
 #' 
-#' \code{W} is a wrapper for \code{\link[lamW:lamW]{lambert_W0C}} and
-#'     \code{\link[lamW:lamW]{lambert_Wm1_C}} in the \pkg{lamW} package.
+#' \code{W} is a wrapper for \code{\link[lamW]{lambert_W0C}} and
+#'     \code{\link[lamW]{lambert_Wm1_C}} in the \pkg{lamW} package.
 #' 
 #' @details
 #' 
@@ -63,11 +63,11 @@
 #' \code{NA} if \eqn{z < -1/e}. 
 #' 
 #' Note that \code{W} handles \code{NaN} differently to
-#'  \code{\link[lamW:lamW]{lambertW0_C}} and
-#'  \code{\link[lamW:lamW]{lambertWm1_C}} in the \pkg{lamW} package; it returns
+#'  \code{\link[lamW]{lambertW0_C}} and
+#'  \code{\link[lamW]{lambertWm1_C}} in the \pkg{lamW} package; it returns
 #'  \code{NA}.
-#' @seealso \code{\link[lamW:lamW]{lambertW0_C}} and
-#'     \code{\link[lamW:lamW]{lambertWm1_C}} in the \pkg{lamW} package;
+#' @seealso \code{\link[lamW]{lambertW0_C}} and
+#'     \code{\link[lamW]{lambertWm1_C}} in the \pkg{lamW} package;
 #'     \code{\link{xexp}}.
 #' 
 #' @importFrom lamW lambertW0_C

@@ -6,7 +6,7 @@
 This is the github repo for the **LambertW** R package [hosted on
 CRAN](https://CRAN.R-project.org/package=LambertW). 
 
-Current version on CRAN is `0.6.5` updated on June 8, 2020 -- reflected in repo here.  See commit history for any changes after the `0.6.5` update.
+Current version on CRAN is `0.6.6` updated on December 13, 2020 -- reflected in repo here.  See commit history for any changes after the `0.6.6` update.
 
 
 ## Installation & usage

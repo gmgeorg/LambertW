@@ -1,8 +1,8 @@
 Package: LambertW
 Type: Package
 Title: Probabilistic Models to Analyze and Gaussianize Heavy-Tailed, Skewed Data
-Version: 0.6.5
-Date: 2020-06-06
+Version: 0.6.6
+Date: 2020-12-13
 Authors@R: 
     person(given = "Georg M.",
            family = "Goerg",
@@ -17,7 +17,7 @@ Description: Lambert W x F distributions are a generalized framework to analyze
     The transformed RV Y has a Lambert W x F distribution. This package contains
     functions to model and analyze skewed, heavy-tailed data the Lambert Way:
     simulate random samples, estimate parameters, compute quantiles, and plot/
-    print results nicely. Probably the most important function is 'Gaussianize',
+    print results nicely. The most useful function is 'Gaussianize',
     which works similarly to 'scale', but actually makes the data Gaussian.
     A do-it-yourself toolkit allows users to define their own Lambert W x
     'MyFavoriteDistribution' and use it in their analysis right away.

@@ -8,12 +8,19 @@
 * always: add more distributions by default
 * convert Lambert W toolkit to reference classes, rather than S3 classes
 
+## 0.6.6
+
+* fixed link issues with new way of parsing URLs in `Rd` files for R
+
 ## v0.6.5
 
-* moved code to [https://github.com/gmgeorg/LambertW](https://github.com/gmgeorg/LambertW)
-* fixed CRAN check `WARNINGS` (thanks to Kurt Hornik for help on resolving Rcpp build errors)
-* fixed zero-division bug in `get_initial_tau()` (happened when `mad(y) = 0` -- which can happen
-  for data with majority of values fall on the same exact value)
+* moved code to
+  [https://github.com/gmgeorg/LambertW](https://github.com/gmgeorg/LambertW)
+* fixed CRAN check `WARNINGS` (thanks to Kurt Hornik for help on resolving Rcpp
+  build errors)
+* fixed zero-division bug in `get_initial_tau()` (happened when `mad(y) = 0` --
+  which can happen for data with majority of values fall on the same exact
+  value)
 * added a introduction vignette
 
 ## v0.6.4
