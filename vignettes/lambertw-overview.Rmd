@@ -10,27 +10,23 @@ options(digits = 3)
 ```
 
 
-```{r load-packages}
-library(LambertW)
-library(ggplot2)
-library(reshape2)
-library(data.table)
-```
-
-
 # Gigantic kurtosis
 
-[Post here](http://stats.stackexchange.com/questions/34565/gigantic-kurtosis)
+[Post here](https://stats.stackexchange.com/questions/34565/gigantic-kurtosis)
 
 Have a look at [heavy-tail Lambert W x F](http://www.hindawi.com/journals/tswj/aa/909231/)
- or [skewed Lambert W x F ](http://projecteuclid.org/euclid.aoas/1318514301) distributions a try.
+ or [skewed Lambert W x F ](http://projecteuclid.org/euclid.aoas/1318514301) distributions for context.
 
 Related posts:
 
-  * http://stats.stackexchange.com/questions/33115/whats-the-distribution-of-these-data/47917#47917
-  * http://stats.stackexchange.com/questions/20445/how-to-transform-data-to-normality/189991#189991
+  * https://stats.stackexchange.com/questions/33115/whats-the-distribution-of-these-data/47917#47917
+  * https://stats.stackexchange.com/questions/20445/how-to-transform-data-to-normality/189991#189991
   
-One advantage over Cauchy or student-t distribution with fixed degrees of freedom is that the tail parameters can be estimated from the data -- so you can let the data decide what moments exist.  Moreover the Lambert W x F framework allows you to transform your data and remove skewness / heavy-tails.   Itt is important to note though that OLS does not require Normality of $y$ or $X$.  However, for your EDA it might be worthwhile.
+One advantage over Cauchy or student-t distribution with fixed degrees of freedom is that
+the tail parameters can be estimated from the data -- so you can let the data decide what 
+moments exist.  Moreover the Lambert W x F framework allows you to transform your data and 
+remove skewness / heavy-tails.   Itt is important to note though that OLS does not require 
+Normality of $y$ or $X$.  However, for your EDA it might be worthwhile.
 
 Here is an example of Lambert W x Gaussian estimates applied to stock market data.
 
@@ -39,9 +35,9 @@ ret <- diff(log(EuStockMarkets)) * 100
 plot(ret)
 ```
 
-
 The summary metrics of the returns are similar (not as extreme) as in OP's post.
 ```{r pairs-metrics}
+library(LambertW)  # this will load the `moments` package as well
 data_metrics <- function(x) {
   c(mean = mean(x), sd = sd(x), min = min(x), max = max(x), 
     skewness = skewness(x), kurtosis = kurtosis(x))
@@ -78,10 +74,9 @@ To consider the effect of Gaussianization on OLS consider predicting "FTSE" retu
 ```{r DAX-FTSE, fig.width = 16, fig.height = 8}
 layout(matrix(1:2, ncol = 2, byrow = TRUE))
 plot(ret[, "FTSE"], ret[, "DAX"])
-# grid()
+grid()
 plot(ret.gauss[, "DAX"], ret.gauss[, "FTSE"])
-# grid()
-
+grid()
 ```
 The left scatterplot of the original series shows that the strong outliers did not occur at the same days, but at different times in India and Europe; other than that it is not clear if the data cloud in the center supports no correlation or negative/positive dependency.  Since outliers strongly affect variance and correlation estimates, it is worthwhile to look at the dependency with heavy tails removed (right scatterplot).  Here the patterns are much more clear and the positive relation between India and Eastern Europe market becomes apparent.
 

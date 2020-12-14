@@ -82,13 +82,13 @@ plot(fit.ml)
 Goerg, G.M. (2011). \dQuote{Lambert W Random Variables - A New Family of
     Generalized Skewed Distributions with Applications to Risk
     Estimation}. Annals of Applied Statistics, 5 (3), 2197-2230.
-    (\url{http://arxiv.org/abs/0912.4554}).
+    (\url{https://arxiv.org/abs/0912.4554}).
 
 Goerg, G.M. (2015). \dQuote{The Lambert Way to Gaussianize heavy-tailed data
     with the inverse of Tukey's h transformation as a special case}.  The
     Scientific World Journal: Probability and Statistics with Applications in
     Finance and Economics. Available at
-    \url{http://www.hindawi.com/journals/tswj/aa/909231/}.
+    \url{https://www.hindawi.com/journals/tswj/aa/909231/}.
 
 Goerg, G.M. (2016).  \dQuote{Rebuttal of the ``Letter to the Editor of
     Annals of Applied Statistics'' on Lambert W x F distributions and the

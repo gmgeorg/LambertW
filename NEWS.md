@@ -11,6 +11,7 @@
 ## 0.6.6
 
 * fixed link issues with new way of parsing URLs in `Rd` files for R
+* updated vignette (added `markdown` to `Suggests`)
 
 ## v0.6.5
 
@@ -140,7 +141,7 @@ Several deprecated functions (see also `?deprecated-function`):
 
 - Updated citation with "The Scientific World Journal: Probability and
   Statistics with Applications in Finance and Economics. Available at
-  [http://www.hindawi.com/journals/tswj/aa/909231/](http://www.hindawi.com/journals/tswj/aa/909231/)"
+  [https://www.hindawi.com/journals/tswj/2015/909231/](https://www.hindawi.com/journals/tswj/2015/909231/)"
 - added `grid` to `test_normality` (previously known as `normfit`)
 - added a "^2" to the N(mu, sigma^2) of the legend; now its clear that the
   displayed value is the standard deviation, not the variance.
@@ -196,7 +197,7 @@ Definitely check out the new manual - it has been reviewed *very* thoroughly.
 * more error checking and much more meaningful error messages.
 * following more closely [Google's R style
   guide](https://google.github.io/styleguide/Rguide.html) (with some of [Hadley
-  Wickham's guide](http://r-pkgs.had.co.nz/style.html) too)
+  Wickham's tidyverse guide](https://style.tidyverse.org/) too)
      * use underscore `_` as separator in function names
      * changed assignments from `=` to `<-`
      * changed variable names with underscore `_` to `.` (unless it `_` helps
