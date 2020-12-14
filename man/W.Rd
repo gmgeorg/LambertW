@@ -31,17 +31,16 @@ why this is useful.}
 \value{
 numeric; same dimensions/size as \code{z}.
 
-\code{W} returns numeric, \code{Inf} (for \code{z = Inf}), or 
-\code{NA} if \eqn{z < -1/e}. 
+\code{W} returns numeric, \code{Inf} (for \code{z = Inf}), or \code{NA} if
+\eqn{z < -1/e}. 
 
 Note that \code{W} handles \code{NaN} differently to
- \code{\link[lamW:lamW]{lambertW0_C}} and
- \code{\link[lamW:lamW]{lambertWm1_C}} in the \pkg{lamW} package; it returns
+ \code{\link[lamW]{lambertW0}} / \code{\link[lamW]{lambertWm1}} in the \pkg{lamW} package; it returns
  \code{NA}.
 }
 \description{
-The Lambert W function \eqn{W(z) = u} is defined as the inverse of (see
-    \code{\link{xexp}})
+The Lambert W function \eqn{W(z) = u} is defined as the inverse
+of (see \code{\link{xexp}})
 
 \deqn{ u \exp(u) = z, }
 
@@ -52,15 +51,14 @@ i.e., it satisfies \eqn{W(z) \exp(W(z)) = z}.
     principal (\code{branch = 0} (default)) and non-principal branch
     (\code{branch = -1}) solution.
 
-\code{W} is a wrapper for \code{\link[lamW:lamW]{lambert_W0C}} and
-    \code{\link[lamW:lamW]{lambert_Wm1_C}} in the \pkg{lamW} package.
+\code{W} is a wrapper for \code{\link[lamW]{lambertW0}} and
+\code{\link[lamW]{lambertWm1}} in the \pkg{lamW} package.
 }
 \details{
 Depending on the argument \eqn{z} of \eqn{W(z)} one can distinguish 3 cases:
-\describe{
-\item{\eqn{z \geq 0}}{solution is unique \code{W(z) = W(z, branch = 0)}};
-\item{\eqn{-1/e \leq z < 0}}{two solutions: the principal (\code{W(z, branch = 0)})
-and non-principal (\code{W(z, branch = -1)}) branch;}
+\describe{\item{\eqn{z \geq 0}}{solution is unique \code{W(z) = W(z, branch =
+0)}}; \item{\eqn{-1/e \leq z < 0}}{two solutions: the principal (\code{W(z,
+branch = 0)}) and non-principal (\code{W(z, branch = -1)}) branch;}
 \item{\eqn{z < -1/e}}{ no solution exists in the reals.}
 }
 
@@ -72,8 +70,8 @@ and non-principal (\code{W(z, branch = -1)}) branch;}
 
 Note that \eqn{W'(0) = 1} and \eqn{W'(-1/e) = \infty}.
 
-Moreover, by taking logs on both sides we can even simplify further to \deqn{
-    \log W'(z) = \log W(z) - \log z - \log (1 + W(z))} which, since
+Moreover, by taking logs on both sides we can even simplify further to
+    \deqn{\log W'(z) = \log W(z) - \log z - \log (1 + W(z))} which, since
     \eqn{\log W(z) = \log z - W(z)}, simplifies to
 
 \deqn{ \log W'(z) = - W(z) - \log (1 + W(z)).} 
@@ -83,19 +81,20 @@ For this reason it is numerically faster to pass the value of \eqn{W(z)} as
     evaluated in a previous step.
 }
 \examples{
- 
-W(-0.25) # "reasonable" input event
+
+W(-0.25) # "reasonable" input event 
 W(-0.25, branch = -1) # "extreme" input event
 
 curve(W(x, branch = -1), -1, 2, type = "l", col = 2, lwd = 2)
-curve(W(x), -1, 2, type = "l", add = TRUE, lty = 2)
+curve(W(x), -1, 2, type = "l", add = TRUE, lty = 2) 
 abline(v = - 1 / exp(1))
 
 # For lower values, the principal branch gives the 'wrong' solution; 
 # the non-principal must be used.
-xexp(-10)
-W(xexp(-10), branch = 0)
+xexp(-10) 
+W(xexp(-10), branch = 0) 
 W(xexp(-10), branch = -1)
+
 curve(log(x), 0.1, 5, lty = 2, col = 1, ylab = "")
 curve(W(x), 0, 5, add = TRUE, col = "red")
 curve(log_W(x), 0.1, 5, add = TRUE, col = "blue")
@@ -106,12 +105,11 @@ legend("bottomright", c("log(x)", "W(x)", "log(W(x))"),
 }
 \references{
 Corless, R. M., G. H. Gonnet, D. E. G. Hare, D. J. Jeffrey and D. E. Knuth
-    (1996). \dQuote{On the Lambert W function}. Advances in Computational
-    Mathematics, pp. 329-359.
+(1996). \dQuote{On the Lambert W function}. Advances in Computational
+Mathematics, pp. 329-359.
 }
 \seealso{
-\code{\link[lamW:lamW]{lambertW0_C}} and
-    \code{\link[lamW:lamW]{lambertWm1_C}} in the \pkg{lamW} package;
-    \code{\link{xexp}}.
+\code{\link[lamW]{lambertW0}} / \code{\link[lamW]{lambertWm1}}in the \pkg{lamW} package;
+ \code{\link{xexp}}.
 }
 \keyword{math}
