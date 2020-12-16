@@ -70,7 +70,7 @@
 * moved from **gsl** to **lamW** R package: the Lambert W implementation is ~4x
   faster than for **gsl**. Needless to say that this will also speed up many
   computations in the **LambertW** package. Thank you [Avraham
-  Adler](http://www.avrahamadler.com/2015/05/26/lamw-package-cran/) for the
+  Adler](https://www.avrahamadler.com/2015/05/26/lamw-package-cran/) for the
   **lamW** package.
 
 * new functions:

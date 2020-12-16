@@ -51,6 +51,7 @@ Feel free to contact me for comments, suggestions, code improvements,
 }
 \examples{
 
+\dontrun{
 # Replicate parts of the analysis in Goerg (2011)
 data(AA)
 y <- AA[AA$sex=="f", "bmi"]
@@ -76,6 +77,7 @@ test_normality(x) # input is normal -> fit a Lambert W x Gaussian by MLE
 fit.ml <- MLE_LambertW(y, type = "s", distname = "normal", hessian = TRUE)
 summary(fit.ml)
 plot(fit.ml)
+}
 
 }
 \references{
@@ -88,7 +90,7 @@ Goerg, G.M. (2015). \dQuote{The Lambert Way to Gaussianize heavy-tailed data
     with the inverse of Tukey's h transformation as a special case}.  The
     Scientific World Journal: Probability and Statistics with Applications in
     Finance and Economics. Available at
-    \url{https://www.hindawi.com/journals/tswj/aa/909231/}.
+    \url{https://www.hindawi.com/journals/tswj/2015/909231/}.
 
 Goerg, G.M. (2016).  \dQuote{Rebuttal of the ``Letter to the Editor of
     Annals of Applied Statistics'' on Lambert W x F distributions and the

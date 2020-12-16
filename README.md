@@ -33,4 +33,4 @@ See cross-validated / stackoverflow for [a variety of **LambertW** posts](https:
 
 Georg M. Goerg (2011): [*Lambert W random variables - a new family of generalized skewed distributions with applications to risk estimation*](https://projecteuclid.org/euclid.aoas/1318514301). Annals of Applied Statistics 3(5). 2197-2230.
 
-Georg M. Goerg (2014): [*The Lambert Way to Gaussianize heavy-tailed data with the inverse of Tukey's h transformation as a special case*](http://downloads.hindawi.com/journals/tswj/2015/909231.pdf). The Scientific World Journal.
+Georg M. Goerg (2014): [*The Lambert Way to Gaussianize heavy-tailed data with the inverse of Tukey's h transformation as a special case*](https://downloads.hindawi.com/journals/tswj/2015/909231.pdf). The Scientific World Journal.

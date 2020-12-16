@@ -72,6 +72,7 @@
 #' @importFrom Rcpp sourceCpp evalCpp
 #' @examples
 #'
+#' \dontrun{
 #' # Replicate parts of the analysis in Goerg (2011)
 #' data(AA)
 #' y <- AA[AA$sex=="f", "bmi"]
@@ -97,5 +98,6 @@
 #' fit.ml <- MLE_LambertW(y, type = "s", distname = "normal", hessian = TRUE)
 #' summary(fit.ml)
 #' plot(fit.ml)
+#' }
 #'
 NULL

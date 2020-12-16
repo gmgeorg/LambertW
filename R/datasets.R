@@ -53,7 +53,7 @@ NULL
 #' 
 #' \url{http://tuvalu.santafe.edu/~aaronc/powerlaws/data.htm}
 #' 
-#' \url{https://adsabs.harvard.edu/abs/1991chxb.book.....D}
+#' \url{https://ui.adsabs.harvard.edu/abs/1991chxb.book.....D/abstract}
 #' 
 #' See also References.
 #' 
