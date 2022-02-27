@@ -8,6 +8,11 @@
 
 using namespace Rcpp;
 
+#ifdef RCPP_USE_GLOBAL_ROSTREAM
+Rcpp::Rostream<true>&  Rcpp::Rcout = Rcpp::Rcpp_cout_get();
+Rcpp::Rostream<false>& Rcpp::Rcerr = Rcpp::Rcpp_cerr_get();
+#endif
+
 // W_Cpp
 NumericVector W_Cpp(const NumericVector& z, int branch);
 static SEXP _LambertW_W_Cpp_try(SEXP zSEXP, SEXP branchSEXP) {

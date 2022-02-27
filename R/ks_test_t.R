@@ -31,10 +31,10 @@
 #' set.seed(1021)
 #' beta.true <- c(location = 0, scale = 1, df = 4)
 #' xx <- rt(n = 1000, df = beta.true['df'])
-#' ks.test.t(xx)
-#' ks.test.t(xx, beta.true)
+#' ks_test_t(xx)
+#' ks_test_t(xx, beta.true)
 #' 
-ks.test.t <- function(x, param = NULL) {
+ks_test_t <- function(x, param = NULL) {
   
   if (is.null(param)) {
     param <- suppressWarnings(fitdistr(x, "t")$est)

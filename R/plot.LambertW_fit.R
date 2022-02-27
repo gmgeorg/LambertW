@@ -29,7 +29,7 @@ plot.LambertW_fit <- function(x, xlim = NULL, show.qqplot = FALSE, ...) {
     return(dLambertW(xx, theta = x$theta, distname = x$distname,
                      use.mean.variance = x$use.mean.variance))
   }
-  .PdfZeroLambertW = function(xx){
+  .PdfZeroLambertW <- function(xx){
     return(dLambertW(xx, theta = list(beta = beta.y), 
                      distname = x$distname,
                      use.mean.variance = x$use.mean.variance))

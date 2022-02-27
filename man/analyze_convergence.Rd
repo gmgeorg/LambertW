@@ -97,5 +97,5 @@ for (jj in seq_along(plot.lists[[1]])) {
 }
 \references{
 Stehlik and Hermann (2015). ``Letter to the Editor''. Ann. Appl. Stat. 9
-   2051. doi:10.1214/15-AOAS864 -- \url{http://projecteuclid.org/euclid.aoas/1453994190}
+   2051. doi:10.1214/15-AOAS864 -- \url{https://projecteuclid.org/euclid.aoas/1453994190}
 }

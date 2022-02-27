@@ -15,7 +15,7 @@ options(digits = 3)
 [Post here](https://stats.stackexchange.com/questions/34565/gigantic-kurtosis)
 
 Have a look at [heavy-tail Lambert W x F](https://www.hindawi.com/journals/tswj/2015/909231/)
- or [skewed Lambert W x F ](http://projecteuclid.org/euclid.aoas/1318514301) distributions for context.
+ or [skewed Lambert W x F ](https://projecteuclid.org/euclid.aoas/1318514301) distributions for context.
 
 Related posts:
 

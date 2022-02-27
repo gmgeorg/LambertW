@@ -35,7 +35,7 @@
 #'
 #' @references
 #' Stehlik and Hermann (2015). ``Letter to the Editor''. Ann. Appl. Stat. 9
-#'    2051. doi:10.1214/15-AOAS864 -- \url{http://projecteuclid.org/euclid.aoas/1453994190}
+#'    2051. doi:10.1214/15-AOAS864 -- \url{https://projecteuclid.org/euclid.aoas/1453994190}
 #' 
 #' @param LambertW_fit,object,x an object of class \code{"LambertW_fit"} with an
 #'     \code{IGMM} or \code{MLE_LambertW} estimate.
