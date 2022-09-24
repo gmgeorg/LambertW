@@ -4,9 +4,8 @@
 
 
 This is the github repo for the **LambertW** R package [hosted on
-CRAN](https://CRAN.R-project.org/package=LambertW). 
-
-Current version on CRAN is `0.6.7` scheduled to be updated on February 27, 2022 -- reflected in repo here.  See commit history for any changes after the `0.6.7` update.
+CRAN](https://CRAN.R-project.org/package=LambertW).  For any changes after the official
+version, see the commit history and here.
 
 
 ## Installation & usage
@@ -20,7 +19,7 @@ citation("LambertW")
 
 See `?LambertW` for examples on how to use the **LambertW** package.
 
-There is also an R vignette on CRAN with a brief tutorial on the main functionalities.
+There is also an [R vignette on CRAN](https://cran.r-project.org/web/packages/LambertW/vignettes/lambertw-overview.html) with a brief tutorial on the main functionalities.
 
 
 ## Tutorials & posts

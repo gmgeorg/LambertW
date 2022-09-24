@@ -8,6 +8,10 @@
 * always: add more distributions by default
 * convert Lambert W toolkit to reference classes, rather than S3 classes
 
+## 0.6.7-1
+
+* minor fix on HTML formatting to be compliant with CRAN.
+
 ## 0.6.7
 
 * renamed `ks.test.t` to `ks_test_t` to avoid CRAN complaining about misuse of `S3method`

@@ -71,10 +71,10 @@ The numeric parameters of mean, scale, and skewness/heavy-tail parameters
     attributes of the output matrix: \code{'Gaussianized:mu'},
     \code{'Gaussianized:sigma'}, and for
 
-\item{type = \code{"h"}:}{\code{'Gaussianized:delta'} & \code{'Gaussianized:alpha'},}
-\item{type = \code{"hh"}:}{\code{'Gaussianized:delta_l'} and \code{'Gaussianized:delta_r'} & 
+\item{type = "h":}{\code{'Gaussianized:delta'} & \code{'Gaussianized:alpha'},}
+\item{type = "hh":}{\code{'Gaussianized:delta_l'} and \code{'Gaussianized:delta_r'} & 
 \code{'Gaussianized:alpha_l'} and \code{'Gaussianized:alpha_r'},}
-\item{type = \code{"s"}:}{\code{'Gaussianized:gamma'}.}
+\item{type = "s":}{\code{'Gaussianized:gamma'}.}
 
 They can also be returned as a separate matrix using \code{return.tau.mat =
     TRUE}. In this case \code{Gaussianize} returns a list with elements:

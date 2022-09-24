@@ -46,12 +46,12 @@ NULL
 #' 
 #' Clauset, A., C. R. Shalizi, and M. E. J. Newman (2009). ``Power-law
 #' distributions in empirical data''. SIAM Review 51, 661-703 (2009). See also
-#' \url{http://tuvalu.santafe.edu/~aaronc/powerlaws/}.
+#' \url{https://sites.santafe.edu/~aaronc/powerlaws/data.htm}.
 #' 
 #' @source 
 #' Resources on the \code{SolarFlares} dataset can be found at:
 #' 
-#' \url{http://tuvalu.santafe.edu/~aaronc/powerlaws/data.htm}
+#' \url{https://sites.santafe.edu/~aaronc/powerlaws/data.htm}
 #' 
 #' \url{https://ui.adsabs.harvard.edu/abs/1991chxb.book.....D/abstract}
 #' 
