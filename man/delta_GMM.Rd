@@ -41,8 +41,7 @@ restricted to the non-negative reals. Default: \code{FALSE}.}
 (only for \code{type = 'h'} and if \code{not.negative = FALSE}) or \code{'nlm'}.  
 Performance-wise there is no big difference.}
 
-\item{lower, upper}{lower and upper bound for optimization if \code{optim.fct = 'optimize'}
-and \code{not.negative = FALSE}. Default: \code{-1} and \code{3} 
+\item{lower, upper}{lower and upper bound for optimization. Default: \code{-1} and \code{3} 
 (this covers most real-world heavy-tail scenarios).}
 }
 \value{

@@ -4,7 +4,7 @@
 \alias{delta_Taylor}
 \title{Estimate of delta by Taylor approximation}
 \usage{
-delta_Taylor(y, kurtosis.y = kurtosis(y), distname = "normal")
+delta_Taylor(y, kurtosis.y = moments::kurtosis(y), distname = "normal")
 }
 \arguments{
 \item{y}{a numeric vector of data values.}

@@ -60,7 +60,7 @@ delta_GMM <- function(z, type = c("h", "hh"),
   
   optim.fct <- match.arg(optim.fct)
   type <- match.arg(type)
-  skewness.z <- moments::skewness(z)
+  skewness.z <- skewness(z)
   
   if (type == "h") {
     .obj_fct <- function(delta) {
@@ -98,8 +98,8 @@ delta_GMM <- function(z, type = c("h", "hh"),
       if (anyNA(u.g) || any(is.infinite(u.g))) {
         return(LambertW::lp_norm(kurtosis.x, 2) + LambertW::lp_norm(skewness.x * 2, 2))
       } else {
-        empirical.kurtosis <- moments::kurtosis(u.g)
-        empirical.skewness <- moments::skewness(u.g)
+        empirical.kurtosis <- kurtosis(u.g)
+        empirical.skewness <- skewness(u.g)
         
         # for delta -> Inf, u.g can become (numerically) a constant vector
         # thus kurtosis(u.g) = NA.  In this case set empirical.kurtosis
