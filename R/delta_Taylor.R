@@ -47,7 +47,7 @@
 #' delta_Taylor(y) # bounded by 1/4 (as otherwise kurtosis does not exist)
 #' delta_GMM(y) # iterative estimate
 #' 
-delta_Taylor <- function(y, kurtosis.y = kurtosis(y), distname = "normal") {
+delta_Taylor <- function(y, kurtosis.y = moments::kurtosis(y), distname = "normal") {
   stopifnot(is.numeric(kurtosis.y),
             length(kurtosis.y) == 1,
             kurtosis.y > 0)
