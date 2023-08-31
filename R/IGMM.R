@@ -219,7 +219,7 @@ IGMM <- function(y, type = c("h", "hh", "s"), skewness.x = 0, kurtosis.x = 3,
       DEL <- delta_GMM(zz, delta.init = tau.trace[kk + 1, "delta"], 
                        kurtosis.x = kurtosis.x, tol = tol,
                        not.negative = not.negative, 
-                       type = "h")
+                       type = "h", lower=delta.lower, upper=delta.upper)
       delta.hat <- DEL$delta
       
       uu <- W_delta(zz, delta.hat)
@@ -270,6 +270,7 @@ IGMM <- function(y, type = c("h", "hh", "s"), skewness.x = 0, kurtosis.x = 3,
                            delta.init = tail(tau.trace[, c("delta_l", "delta_r")], 1), 
                            kurtosis.x = kurtosis.x, skewness.x = skewness.x, 
                            tol = tol, not.negative = not.negative,
+                           lower=delta.lower, upper=delta.upper,
                            type = "hh")$delta
     tau.trace <- rbind(tau.trace, 
                      c(tail(tau.trace[, c("mu_x", "sigma_x")], 1), delta.hat))
