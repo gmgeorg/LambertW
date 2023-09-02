@@ -8,6 +8,12 @@
 * always: add more distributions by default
 * convert Lambert W toolkit to reference classes, rather than S3 classes
 
+## 0.6.8
+
+* fixes bug on lower/upper bound on `delta` estimates (https://github.com/gmgeorg/LambertW/issues/3)
+* update CITATION file to fix misc CRAN checks
+* clean up vignette
+
 ## 0.6.7-1
 
 * minor fix on HTML formatting to be compliant with CRAN.

@@ -205,7 +205,7 @@ MLE_LambertW <- function(y, distname, type = c("h", "s", "hh"),
       fit <- optim(par = params.init,
                    fn = .neg_loglik_LambertW, 
                    param.names = names(params.init),
-                   control = list(trace = 1),
+                   control = list(trace = 0),
                    hessian = FALSE)
     } else {
       fit <- optim(par = params.init,
