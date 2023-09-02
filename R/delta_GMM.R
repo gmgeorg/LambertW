@@ -22,8 +22,7 @@
 #' @param optim.fct which R optimization function should be used. Either \code{'optimize'} 
 #' (only for \code{type = 'h'} and if \code{not.negative = FALSE}) or \code{'nlm'}.  
 #' Performance-wise there is no big difference.
-#' @param lower,upper lower and upper bound for optimization if \code{optim.fct = 'optimize'}
-#' and \code{not.negative = FALSE}. Default: \code{-1} and \code{3} 
+#' @param lower,upper lower and upper bound for optimization. Default: \code{-1} and \code{3} 
 #' (this covers most real-world heavy-tail scenarios).
 #' @return 
 #' A list with two elements: 
@@ -61,17 +60,18 @@ delta_GMM <- function(z, type = c("h", "hh"),
   
   optim.fct <- match.arg(optim.fct)
   type <- match.arg(type)
-
+  skewness.z <- skewness(z)
+  
   if (type == "h") {
     .obj_fct <- function(delta) {
       if (not.negative) {
         # convert delta to > 0
         delta <- exp(delta)
       }
-      u.g <- W_delta(z, delta = delta)
+      u.g <- LambertW::W_delta(z, delta = delta)
 
       if (anyNA(u.g) || any(is.infinite(u.g))) {
-        return(lp_norm(kurtosis.x, 2))
+        return(LambertW::lp_norm(kurtosis.x, 2))
       } else {
         empirical.kurtosis <- kurtosis(u.g)
         # for delta -> Inf, u.g can become (numerically) a constant vector
@@ -85,7 +85,7 @@ delta_GMM <- function(z, type = c("h", "hh"),
                   "Please double-check results (in particular the 'delta' ",
                   "estimate).")
         }
-        return(lp_norm(empirical.kurtosis - kurtosis.x, 2))
+        return(LambertW::lp_norm(empirical.kurtosis - kurtosis.x, 2))
       }
     }
   } else if (type == "hh") {
@@ -94,9 +94,9 @@ delta_GMM <- function(z, type = c("h", "hh"),
         # convert delta to > 0
         delta <- exp(delta)
       }
-      u.g <- W_2delta(z, delta = delta)
+      u.g <- LambertW::W_2delta(z, delta = delta)
       if (anyNA(u.g) || any(is.infinite(u.g))) {
-        return(lp_norm(kurtosis.x, 2) + lp_norm(skewness.x * 2, 2))
+        return(LambertW::lp_norm(kurtosis.x, 2) + LambertW::lp_norm(skewness.x * 2, 2))
       } else {
         empirical.kurtosis <- kurtosis(u.g)
         empirical.skewness <- skewness(u.g)
@@ -114,21 +114,21 @@ delta_GMM <- function(z, type = c("h", "hh"),
         }
         if (is.na(empirical.skewness)) {
           # make it skewed the same way as the input
-          empirical.skewness <- 1e10 * (2 * as.numeric(skewness(z) > 0) - 1)
+          empirical.skewness <- 1e10 * (2 * as.numeric(skewness.z > 0) - 1)
           warning("Skewness estimate was NA. ",
                   "Set to large value (", empirical.skewness, 
                   ") for optimization to continue.\n",
                   "Please double-check results (in particular the 'delta' ",
                   "estimates).")
         }
-        return(lp_norm(empirical.kurtosis - kurtosis.x, 2) + 
-                 lp_norm(empirical.skewness - skewness.x, 2))
+        return(LambertW::lp_norm(empirical.kurtosis - kurtosis.x, 2) + 
+                 LambertW::lp_norm(empirical.skewness - skewness.x, 2))
       }
     }
     if (length(delta.init) == 1) {
       delta.init <- delta.init * c(1.1, 0.9)
     }
-    if (skewness(z) > 0) {
+    if (skewness.z > 0) {
       # revert lower and upper delta if skewness is positive
       delta.init <- rev(delta.init)
     }
@@ -154,10 +154,13 @@ delta_GMM <- function(z, type = c("h", "hh"),
   if (not.negative) {
     delta.hat <- exp(delta.hat)
     # round it to 6 digits, so that values like 1e-9 become 0
-    if (lp_norm(delta.hat, 1) < 1e-7)
+    if (LambertW::lp_norm(delta.hat, 1) < 1e-7)
     delta.hat <- round(delta.hat, 6)
   }
   names(delta.hat) <- NULL
   out[["delta"]] <- delta.hat
+  # apply upper / lower bounds again
+  out[["delta"]] <- pmin(out[["delta"]], upper)
+  out[["delta"]] <- pmax(out[["delta"]], lower)
   return(out)
 } 
