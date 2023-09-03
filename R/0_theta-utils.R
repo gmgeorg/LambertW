@@ -28,11 +28,11 @@
 #' get_initial_theta(x, distname = "normal", type = "s")
 #' 
 #' # starting values for the skewed version of an exponential
-#' y <- rLambertW(n = 1000, distname = "exp", beta = 2, gamma = 0.1)
+#' y <- rLambertW(n = 1000, distname = "exp", theta=list(beta = 2, gamma = 0.1))
 #' get_initial_theta(y, distname = "exp", type = "s")
 #' 
 #' # starting values for the heavy-tailed version of a Normal = Tukey's h
-#' y <- rLambertW(n = 1000, beta = c(2, 1), distname = "normal", delta = 0.2)
+#' y <- rLambertW(n = 1000, distname="normal", theta=list(beta = c(2, 1), delta = 0.2))
 #' get_initial_theta(y, distname = "normal", type = "h")#' 
 #' 
 #' ###

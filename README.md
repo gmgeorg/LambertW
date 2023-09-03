@@ -19,7 +19,7 @@ citation("LambertW")
 
 See `?LambertW` for examples on how to use the **LambertW** package.
 
-There is also an [R vignette on CRAN](https://cran.r-project.org/web/packages/LambertW/vignettes/lambertw-overview.html) with a brief tutorial on the main functionalities.
+There is also an [R vignette on CRAN](https://CRAN.R-project.org/package=LambertW/vignettes/lambertw-overview.html) with a brief tutorial on the main functionalities.
 
 
 ## Tutorials & posts

@@ -14,8 +14,8 @@ options(digits = 3)
 
 [Post here](https://stats.stackexchange.com/questions/34565/gigantic-kurtosis)
 
-Have a look at [heavy-tail Lambert W x F](https://www.hindawi.com/journals/tswj/2015/909231/)
- or [skewed Lambert W x F ](https://projecteuclid.org/euclid.aoas/1318514301) distributions for context.
+Have a look at the original papers on [heavy-tail Lambert W x F](https://www.hindawi.com/journals/tswj/2015/909231/)
+ or [skewed Lambert W x F ](https://projecteuclid.org/euclid.aoas/1318514301) distributions for context (Goerg 2011, Goerg 2015).
 
 Related posts:
 
@@ -25,7 +25,7 @@ Related posts:
 One advantage over Cauchy or student-t distribution with fixed degrees of freedom is that
 the tail parameters can be estimated from the data -- so you can let the data decide what 
 moments exist.  Moreover the Lambert W x F framework allows you to transform your data and 
-remove skewness / heavy-tails.   Itt is important to note though that OLS does not require 
+remove skewness / heavy-tails.   It is important to note though that OLS does not require 
 Normality of $y$ or $X$.  However, for your EDA it might be worthwhile.
 
 Here is an example of Lambert W x Gaussian estimates applied to stock market data.
@@ -36,7 +36,7 @@ plot(ret)
 ```
 
 The summary metrics of the returns are similar (not as extreme) as in OP's post.
-```{r pairs-metrics}
+```{r pairs-metrics, message=FALSE}
 library(LambertW)  # this will load the `moments` package as well
 data_metrics <- function(x) {
   c(mean = mean(x), sd = sd(x), min = min(x), max = max(x), 
@@ -49,9 +49,9 @@ ret.metrics
 Most series show clearly non-Normal characteristics (strong skewness and/or large kurtosis).  Let's Gaussianize each series using a heavy tailed 
 Lambert W x Gaussian distribution (= Tukey's h) using a methods of moments
 estimator (`IGMM`).
+
 ```{r gaussianize-returns}
-library(LambertW)
-ret.gauss <- Gaussianize(ret, type = "h", method = "IGMM")
+ret.gauss <- LambertW::Gaussianize(ret, type = "h", method = "IGMM")
 colnames(ret.gauss) <- gsub("\\.X", "", colnames(ret.gauss))
 
 plot(ret.gauss)
@@ -60,11 +60,24 @@ plot(ret.gauss)
 The time series plots show much fewer tails and also more stable variation over time (not constant though).  Computing the metrics again on the Gaussianized time series yields:
 
 ```{r metrics-gaussianized}
-ret.gauss.metrics <- t(apply(ret.gauss, 2, data_metrics))
+ret.gauss.metrics <- round(t(apply(ret.gauss, 2, data_metrics)), 3)
 ret.gauss.metrics
 ```
 
-The `IGMM` algorithm achieved exactly what it was set forth to do: transform the data to have kurtosis equal to $3$. Interestingly, all time series now have negative skewness, which is in line with most financial time series literature.  Important to point out here that `Gaussianize()` operates only marginally, not jointly (analogously to `scale()`).
+The `IGMM` algorithm achieved exactly what it was set forth to do: transform the data to have kurtosis equal to $3$. Interestingly, all time series now have negative skewness, which is in line with most financial time series literature -- yet the magnitude of skewness is much (!) smaller than on the original scale, which was heavily influenced by the heavy tails.  Important to point out here that `Gaussianize()` operates only marginally, not jointly (analogously to `scale()`).
+
+Here the tail parameters are stored as a `"Gaussianized:delta"` attribute, which shows that DAX and SMI are more heavy-tailed than CAC.
+```{r show-parameter-estimates}
+attr(ret.gauss, "Gaussianized:delta")
+```
+
+It is clear from moments estimates that the gaussianized data is still skewed; in this case, try out a double-tailed Lambert W Gaussianization: `type="hh"`:
+
+```{r skew-tail-gaussianize, eval=FALSE, include=TRUE}
+ret.gauss <- LambertW::Gaussianize(ret, type = "hh", method = "IGMM")
+colnames(ret.gauss) <- gsub("\\.X", "", colnames(ret.gauss))
+plot(ret.gauss)
+```
 
 
 ## Simple bivariate regression
@@ -78,7 +91,10 @@ grid()
 plot(ret.gauss[, "DAX"], ret.gauss[, "FTSE"])
 grid()
 ```
-The left scatterplot of the original series shows that the strong outliers did not occur at the same days, but at different times in India and Europe; other than that it is not clear if the data cloud in the center supports no correlation or negative/positive dependency.  Since outliers strongly affect variance and correlation estimates, it is worthwhile to look at the dependency with heavy tails removed (right scatterplot).  Here the patterns are much more clear and the positive relation between India and Eastern Europe market becomes apparent.
+
+The left scatterplot of the original series shows that the strong outliers did not occur on the same days, but at different times in India and Europe; other than that it is not clear if the data cloud in the center supports no correlation or negative/positive dependency.  Since outliers strongly affect variance and correlation estimates, it is worthwhile to look at the dependency with heavy tails removed (right scatterplot).
+
+Here the patterns are much more clear and the positive relation between India and Eastern Europe market becomes apparent.
 
 
 ```{r fit-models, include = TRUE, eval = FALSE}
@@ -95,7 +111,7 @@ summary(mod.gauss)
 ## Granger causality
 
 A Granger causality test based on a  $VAR(5)$ model (I use $p = 5$ to capture the week effect of daily trades) for "DAX" and "CAX" rejects "no Granger causality" for DAX --> CAC direction.
-```{r vars-ret}
+```{r vars-ret, message=FALSE}
 library(vars)
 mod.vars <- vars::VAR(ret[, c("DAX", "CAC")], p = 6)
 causality(mod.vars, "DAX")$Granger
@@ -113,4 +129,4 @@ causality(mod.vars.gauss, "CAC")$Granger
 ```
 
 
-It is not clear to me which one is the *right* answer (if any), but it's an interesting observation to make.  Needless to say that this entire Causality testing is contingent on the $VAR(6)$ being the correct model -- which it is most likely not; but I think it serves well for illustratiton.
+It is not clear to me which one is the *right* answer (if any), but it's an interesting observation to make.  Needless to say that this entire Causality testing is contingent on the $VAR(6)$ being the correct model -- which it is most likely not; but it serves well for illustration.

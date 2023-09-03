@@ -59,3 +59,19 @@ test_that("IGMM estimate of delta > 1 for Cauchy", {
   expect_gt(mod.cauchy$tau["delta"], 0.5)
 })
 
+
+test_that("IGMM correctly respects lower bound", {
+  mod.norm <- IGMM(yy, type = "h", delta.lower=0.1, delta.upper=0.3)
+
+  expect_gte(mod.norm$tau["delta"], 0.1)
+})
+
+
+test_that("IGMM correctly respects upper bound", {
+  mod.cauchy <- IGMM(yy.cauchy, type = "hh", delta.lower=0.1, delta.upper=0.3)
+  
+  expect_lte(mod.cauchy$tau["delta_l"], 0.3)
+  expect_lte(mod.cauchy$tau["delta_r"], 0.3)
+})
+
+
