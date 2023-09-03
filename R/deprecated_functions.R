@@ -7,7 +7,7 @@
 #'     analogous function with a similar -- more style consistent -- name. See
 #'     also the \code{NEWS} file.
 #' 
-#' As of v0.6.9 deprecated functions will throw errors (`stop()`) and print out the suggested
+#' As of v0.6.8-1 deprecated functions will throw errors (`stop()`) and print out the suggested
 #' new function (name).
 #' 
 #' @name deprecated-functions
@@ -44,14 +44,14 @@ d1W_1 <- function(z, W.z = W(z, branch = -1)) {
 #' @rdname deprecated-functions
 #' @export
 p_1 <- function(...) {
-  stop("DEPRECATED: Please use p_1m() instead of p_m1().")
+  stop("DEPRECATED: Please use p_m1() instead of p_1().")
   p_m1(...)
 }
 
 #' @rdname deprecated-functions
 #' @export
 params2theta <- function(...) {
-  stop("DEPRECATED: Please use unflatten_theta() instead of unflatten_theta().")
+  stop("DEPRECATED: Please use unflatten_theta() instead of params2theta().")
   unflatten_theta(...)
 }
 
@@ -73,7 +73,7 @@ starting_theta <- function(...) {
 #' @rdname deprecated-functions
 #' @export
 support <- function(...) {
-  warnings("DEPRECATED: Please use 'get_support()' instead.")
+  warnings("DEPRECATED: Please use get_support() instead of support().")
   get_support(...)
 }
 
@@ -91,7 +91,7 @@ normfit <- function(...) {
 #' @rdname deprecated-functions
 #' @export
 theta2params <- function(...) {
-  stop("DEPRECATED: use flatten_theta instead of theta2params.")
+  stop("DEPRECATED: use flatten_theta() instead of theta2params().")
   flatten_theta(...)
 }
 
@@ -105,7 +105,7 @@ vec.norm <- function(...) {
 #' @rdname deprecated-functions
 #' @export
 W_1 <- function(z) {
-  # stop("DEPRECATED: Please use W(z, branch = -1) instead of W_1(z).")
+  stop("DEPRECATED: Please use W(z, branch = -1) instead of W_1(z).")
   return(W(z, branch = -1))
 }
 
