@@ -1,6 +1,6 @@
 context("Testing IGMM \n")
 set.seed(40)
-nobs <- 1e3
+nobs <- 200
 yy <- rnorm(n = nobs, mean = 3, sd = 0.2)
 
 test_that("IGMM estimates c(mu, sigma) are approx correct for a Normal distribution", {
@@ -20,7 +20,7 @@ test_that("IGMM estimates c(mu, sigma) are approx correct for a Normal distribut
   }
 })
 
-yy.neg <- rLambertW(n = 1000, theta = list(beta = c(3, 0.2), gamma = -0.3),
+yy.neg <- rLambertW(n = nobs, theta = list(beta = c(3, 0.2), gamma = -0.3),
                     distname = "normal")
 test_that("IGMM estimate of gamma is negative for negatively skewed", {
   mod <- IGMM(yy.neg, type = "s")

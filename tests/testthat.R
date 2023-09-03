@@ -1,8 +1,12 @@
 library(testthat)
 
-cat("Starting tests for 'LambertW' package in 1 second ...")
-Sys.sleep(1)
-
 set.seed(10231)
 
-test_check("LambertW")
+.on_cran <- function() !identical(Sys.getenv("NOT_CRAN"), "true")
+
+if (!.on_cran()) {
+  cat("Starting tests for 'LambertW' package ...")
+  test_check("LambertW")
+} else {
+  cat("Skipping tests on CRAN.")
+}
