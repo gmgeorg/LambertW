@@ -60,6 +60,6 @@ These functions have been deprecated in v0.5 of \pkg{LambertW} mostly for
     analogous function with a similar -- more style consistent -- name. See
     also the \code{NEWS} file.
 
-Deprecated functions still work as expected, but they print out a warning
-suggesting to use the new function (name).
+As of v0.6.8-1 deprecated functions will throw errors (`stop()`) and print out the suggested
+new function (name).
 }
