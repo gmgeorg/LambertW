@@ -6,8 +6,13 @@
 
 .onAttach <- function(libname, pkgname){
   welcome.msg <- 
-    paste0("This is 'LambertW' version ", utils::packageVersion("LambertW"), 
-           '. See the NEWS file and citation("LambertW").\n')
+    paste0("This is 'LambertW' v", utils::packageVersion("LambertW"), 
+           '. See NEWS and citation("LambertW").\n\n')
+  welcome.msg <- paste0(welcome.msg, 
+                        "R:      https://github.com/gmgeorg/LambertW\n")
+  welcome.msg <- paste0(welcome.msg, "Python: https://github.com/gmgeorg/pylambertw\n")
+  welcome.msg <- paste0(welcome.msg, 
+                        "---------------------------------------------")
   packageStartupMessage(welcome.msg, domain = NULL, 
                         appendLF = TRUE)
 }

@@ -21,6 +21,9 @@ See `?LambertW` for examples on how to use the **LambertW** package.
 
 There is also an [R vignette on CRAN](https://CRAN.R-project.org/package=LambertW/vignettes/lambertw-overview.html) with a brief tutorial on the main functionalities.
 
+## Python implementation
+
+See https://github.com/gmgeorg/pylambertw for the Python equivalent of the **LambertW** package.
 
 ## Tutorials & posts
 
