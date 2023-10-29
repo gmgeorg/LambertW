@@ -8,7 +8,7 @@
 #' @param inverse logical; if \code{TRUE}, it transforms the unbounded
 #'     \code{theta} back to the original, bounded space. Default: \code{FALSE}.
 #' 
-#' @details Converting \code{theta} to an unbouded space is especially useful
+#' @details Converting \code{theta} to an unbounded space is especially useful
 #'     for optimization routines (like \code{\link[stats]{nlm}}), which can be
 #'     performed over an unconstrained space. The obtained optimum can be
 #'     converted back to the original space using the inverse transformation
@@ -16,7 +16,7 @@
 #'     guarantees that the estimate satisfies non-negativity constraints (if
 #'     required). The main advantage is that this avoids using optimization
 #'     routines with boundary constraints -- since they are much slower compared
-#'     to uncostrained optimization.
+#'     to unconstrained optimization.
 #' 
 #' @export
 theta2unbounded <- function(theta, distname, type = c("h", "hh", "s"), 
@@ -43,7 +43,7 @@ theta2unbounded <- function(theta, distname, type = c("h", "hh", "s"),
           theta$beta[3] <- log(theta$beta[3])
         }
       }
-    } else if (distname %in% c("gamma", "f", "chisq", "exp", "beta")) {
+    } else if (distname %in% c("gamma", "f", "chisq", "exp", "beta", "weibull")) {
       # all parameters > 0
       if (inverse) {
         theta$beta <- exp(theta$beta) 

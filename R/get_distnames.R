@@ -19,6 +19,8 @@ get_distnames <- function() {
                          "laplace", 
                          "normal", 
                          "t", 
-                         "unif")
+                         "unif", 
+                         "weibull"
+                         )
   return(implemented.dists)
 }

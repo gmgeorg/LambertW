@@ -42,6 +42,10 @@ qU <- function(p, beta, distname, use.mean.variance = TRUE) {
          }, 
          unif = {
            qU <- function(p) qunif(p, -sqrt(3), sqrt(3))
+         },
+         weibull = {
+           qU <- function(p) qweibull(p, shape = beta["shape"], 
+                                      scale = beta["scale"]) / sigma.x
          })
   
   q.u <- qU(p)

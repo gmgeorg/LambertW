@@ -12,9 +12,9 @@ print.LambertW_fit <- function(x, ...) {
   cat(ifelse(x$use.mean.variance,
              "mean-variance",
              "location-scale"), 
-      "Lambert W x F type ('h' same tails; 'hh' different tails; 's' skewed): ", 
-      x$type, "\n")
-  cat("\n Parameter estimates:\n")
+      "Lambert W x F type: ", 
+      x$type, " ('h' same tails; 'hh' different tails; 's' skewed)\n")
+  cat("\nEstimates:\n")
   if (x$method == "IGMM") {
     x$params.hat <- x$tau
   }

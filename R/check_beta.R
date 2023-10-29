@@ -78,5 +78,33 @@ check_beta <- function(beta, distname) {
                   " of the uniform distribution U(a, b).", 
                   "Currently, beta[1] = ", beta[1], " and beta[2] = ", beta[2])
            }
-         })
+         },
+        "weibull" = {
+          if (length(beta) != 2) {
+            stop(dist.text, " be a vector of length 2 (lower and upper bound).",
+                 "\n Currently it has length ", length(beta), ".")
+          } 
+          if (beta[1] < 0) {
+            stop(dist.text, " have shape = beta[1] > 0. ", 
+                 "Currently, beta[1] = ", beta[1])
+          }
+          if (beta[2] < 0) {
+            stop(dist.text, " have scale = beta[2] > 0. ", 
+                 "Currently, beta[2] = ", beta[2])
+          }
+        }, 
+        "gamma" = {
+          if (length(beta) != 2) {
+            stop(dist.text, " be a vector of length 2 (lower and upper bound).",
+                 "\n Currently it has length ", length(beta), ".")
+          } 
+          if (beta[1] < 0) {
+            stop(dist.text, " have shape = beta[1] > 0. ", 
+                 "Currently, beta[1] = ", beta[1])
+          }
+          if (beta[2] < 0) {
+            stop(dist.text, " have scale = beta[2] > 0. ", 
+                 "Currently, beta[2] = ", beta[2])
+          }
+        })
 }

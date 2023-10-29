@@ -8,6 +8,14 @@
 * always: add more distributions by default
 * convert Lambert W toolkit to reference classes, rather than S3 classes
 
+## 0.6.9
+
+* added `"weibull"` as supported distributions (ie `distname="weibull"` works for MLE)
+
+* misc print/summary cleanups
+
+* added reference to github pages for R (https://github.com/gmgeorg/LambertW) and Python (https://github.com/gmgeorg/pylambertw)
+
 ## 0.6.8
 
 * fixes bug on lower/upper bound on `delta` estimates (https://github.com/gmgeorg/LambertW/issues/3)

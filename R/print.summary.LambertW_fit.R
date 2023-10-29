@@ -16,14 +16,14 @@ print.summary.LambertW_fit <- function(x, ...) {
   
   cat("\n Parameter estimates:\n")
   if (x$method == "IGMM") {
-    cat(" Note: standard errors are only asymptotic, simulation based.\n")
+    cat(" Note: standard errors are asymptotic (based on simulations).\n")
     cat(" If you want more accurate estimates see ?bootstrap .")
   }
   
   printCoefmat(x$coefmat, signif.stars = TRUE)
   if (x$type == "s") {
     cat("-------------------------------------------------------------- \n")
-    if (!any(x$distname == c("exp", "chi", "gamma", "F"))) {
+    if (!any(x$distname == c("exp", "chi", "gamma", "F", "weibull"))) {
       M <- rbind(x$support, x$data.range)
       colnames(M) <- c("a", "b")
       rownames(M) <- c("Support", "Data range")
@@ -46,13 +46,13 @@ print.summary.LambertW_fit <- function(x, ...) {
     if (x$method == "IGMM") {
       x$theta <- tau2theta(x$tau, beta = x$tau[c("mu_x", "sigma_x")])
     }
-    cat("\nGiven these input parameter estimates the moments of the output random variable are \n",
+    cat("\nFor these parameter estimates the output random variable Y has \n",
         " (assuming Gaussian input): \n ")
     moments.y <- round(unlist(mLambertW(theta = x$theta, distname = "normal")), 2)
-    cat("mu_y = ", moments.y[1], 
-        "; sigma_y = ", moments.y[2], 
+    cat("mean = ", moments.y[1], 
+        "; sd = ", moments.y[2], 
         "; skewness = ", moments.y[3], 
-        "; kurtosis = ", moments.y[4], ".\n", sep = "")
+        "; kurtosis = ", moments.y[4], "\n", sep = "")
     cat("\n")
   }
 } 

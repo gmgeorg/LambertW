@@ -34,7 +34,10 @@ rU <- function(n, beta, distname, use.mean.variance = TRUE) {
          }, 
          unif = {
            uu <- runif(n, -sqrt(3), sqrt(3))
-         }
+         },
+         weibull = {
+          uu <- rweibull(n, shape = beta["shape"], scale = beta["scale"]) / sigma.x
+        }
   )
   return(uu)
 } 

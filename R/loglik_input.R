@@ -69,6 +69,11 @@ loglik_input <- function(beta, x, distname, dX = NULL,
              dunif(xx, min = beta[1], max = beta[2], log = TRUE)
            }
          },
+         weibull = {
+           .log_dX <- function(xx, beta = beta) {
+             dweibull(xx, shape = beta["shape"], scale = beta["scale"], log = TRUE)
+           }
+         },
          user = {
      
          }

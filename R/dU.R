@@ -38,6 +38,11 @@ dU <- function(u, beta, distname, use.mean.variance = TRUE) {
          },
          unif = {
            fU <- function(u) dunif(u, -sqrt(3), sqrt(3))
+         },
+         weibull = {
+           fU <- function(u) dweibull(u * sigma.x, 
+                                      shape = beta["shape"], 
+                                      scale = beta["scale"]) * sigma.x
          })
   f.u <- fU(u)
   names(f.u) <- names(u)

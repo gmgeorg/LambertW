@@ -19,13 +19,14 @@ get_beta_names <- function(distname) {
   switch(distname,
          cauchy = {beta.names <- c("location", "scale")}, # cauchy does not have finite mean/variance          
          chisq = {beta.names <- "df"},
-         exp = {beta.names <- c("lambda")},
+         exp = {beta.names <- c("rate")},
          f = {beta.names <- c("df1", "df2")},
          gamma = {beta.names <- c("shape", "scale")},
          laplace = {beta.names <- c("location", "scale")},
          normal = {beta.names <- c("mu", "sigma")},
          t = {beta.names <- c("location", "scale", "df")},
          unif = {beta.names <- c("min", "max")},
+         weibull = {beta.names <- c("shape", "scale")},
          user = {beta.names <- NULL})  # user defined distributions return NULL
   return(beta.names)
 } 

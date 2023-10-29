@@ -1,7 +1,7 @@
 Package: LambertW
 Type: Package
 Title: Probabilistic Models to Analyze and Gaussianize Heavy-Tailed, Skewed Data
-Version: 0.6.8-2
+Version: 0.6.9
 Authors@R: 
     person(given = "Georg M.",
            family = "Goerg",

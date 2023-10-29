@@ -152,7 +152,7 @@ unrestricted space (by \eqn{\log}-transformation on
     x}_{\widehat{\theta}} \sim F_X(x \mid \boldsymbol \beta)} (see
     \code{\link{estimate_beta}}).
 
-Converting \code{theta} to an unbouded space is especially useful
+Converting \code{theta} to an unbounded space is especially useful
     for optimization routines (like \code{\link[stats]{nlm}}), which can be
     performed over an unconstrained space. The obtained optimum can be
     converted back to the original space using the inverse transformation
@@ -160,7 +160,7 @@ Converting \code{theta} to an unbouded space is especially useful
     guarantees that the estimate satisfies non-negativity constraints (if
     required). The main advantage is that this avoids using optimization
     routines with boundary constraints -- since they are much slower compared
-    to uncostrained optimization.
+    to unconstrained optimization.
 }
 \examples{
 

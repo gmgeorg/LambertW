@@ -105,7 +105,17 @@ beta2tau <- function(beta, distname, use.mean.variance = TRUE) {
              tau["mu_x"] <- 0
              tau["sigma_x"] <- beta[2]
            }
-         }
+         },
+         weibull = {
+           if (use.mean.variance) {
+             tau["mu_x"] <- 0
+             tau["sigma_x"] <- sqrt(
+               beta["scale"]**2 * (gamma(1 + 2. / beta["shape"]) - gamma(1 + 1. / beta["shape"] )**2 ))
+           } else {
+             tau["mu_x"] <- 0
+             tau["sigma_x"] <- beta["scale"]
+           }
+         },
   )
   if (length(tau) == 0) {
     stop("Seems like distribution '", distname, "' is not supported.")    

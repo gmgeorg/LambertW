@@ -35,6 +35,9 @@ pU <- function(u, beta, distname, use.mean.variance = TRUE) {
          }, 
          unif = {
            FU <- function(u) punif(u, -sqrt(3), sqrt(3))
+         },
+         weibull = {
+           FU <- function(u) pweibull(u * sigma.x, shape = beta["shape"], scale = beta["scale"])
          }
         )
  
