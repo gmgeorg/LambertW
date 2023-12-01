@@ -8,6 +8,10 @@
 * always: add more distributions by default
 * convert Lambert W toolkit to reference classes, rather than S3 classes
 
+## 0.6.9-1
+
+* fixed Rcpp issue with CRAN warnings (see https://github.com/RcppCore/Rcpp/issues/1287)
+
 ## 0.6.9
 
 * added `"weibull"` as supported distributions (ie `distname="weibull"` works for MLE)

@@ -52,5 +52,5 @@ skewness <- function(x) {
 
 # Register entry points for exported C++ functions
 methods::setLoadAction(function(ns) {
-    .Call('_LambertW_RcppExport_registerCCallable', PACKAGE = 'LambertW')
+    .Call(`_LambertW_RcppExport_registerCCallable`)
 })
