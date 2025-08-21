@@ -96,7 +96,18 @@ Goerg, G.M. (2016).  \dQuote{Rebuttal of the ``Letter to the Editor of
     Annals of Applied Statistics'' on Lambert W x F distributions and the
     IGMM algorithm}.  Available on arxiv.
 }
+\seealso{
+Useful links:
+\itemize{
+  \item \url{https://github.com/gmgeorg/LambertW}
+  \item \url{https://arxiv.org/abs/0912.4554}
+  \item \url{https://arxiv.org/abs/1010.2265}
+  \item \url{https://arxiv.org/abs/1602.02200}
+  \item Report bugs at \url{https://github.com/gmgeorg/LambertW/issues}
+}
+
+}
 \author{
 Author and maintainer: Georg M. Goerg (im (at) gmge.org)
 }
-\keyword{package}
+\keyword{internal}
