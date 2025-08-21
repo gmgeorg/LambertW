@@ -1,14 +1,13 @@
 Package: LambertW
 Type: Package
 Title: Probabilistic Models to Analyze and Gaussianize Heavy-Tailed, Skewed Data
-Version: 0.6.9-1
+Version: 0.6.9-2
 Authors@R: 
     person(given = "Georg M.",
            family = "Goerg",
            role = c("aut", "cre"),
            email = "im@gmge.org")
-URL: https://github.com/gmgeorg/LambertW https://arxiv.org/abs/0912.4554
-    https://arxiv.org/abs/1010.2265 https://arxiv.org/abs/1602.02200
+URL: https://github.com/gmgeorg/LambertW, https://arxiv.org/abs/0912.4554, https://arxiv.org/abs/1010.2265, https://arxiv.org/abs/1602.02200
 BugReports: https://github.com/gmgeorg/LambertW/issues
 Description: Lambert W x F distributions are a generalized framework to analyze
     skewed, heavy-tailed data. It is based on an input/output system, where the
@@ -49,6 +48,6 @@ LazyLoad: yes
 NeedsCompilation: yes
 Repository: CRAN
 LinkingTo: Rcpp, lamW
-RoxygenNote: 7.2.3
+RoxygenNote: 7.3.2
 Encoding: UTF-8
 VignetteBuilder: knitr

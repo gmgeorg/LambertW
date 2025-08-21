@@ -1,7 +1,6 @@
 #' @title R package for Lambert W\eqn{ \times} F distributions
 #' @name LambertW-package
 #' @aliases LambertW
-#' @docType package
 #'
 #' @description
 #'
@@ -65,7 +64,7 @@
 #'     Annals of Applied Statistics'' on Lambert W x F distributions and the
 #'     IGMM algorithm}.  Available on arxiv.
 #'
-#' @keywords package
+#' @keywords internal
 #' @import MASS stats graphics methods
 #' @useDynLib LambertW, .registration=TRUE
 # @rawNamespace useDynLib(LambertW, .registration=TRUE)
@@ -100,4 +99,4 @@
 #' plot(fit.ml)
 #' }
 #'
-NULL
+"_PACKAGE"

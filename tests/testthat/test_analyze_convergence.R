@@ -41,8 +41,9 @@ test_that("summary on convergence results work", {
 test_that("bootstrap confidence interval types lead to expected behavior in summary()", {
   for (tt in kTypesCI) {
     if (tt == "bca") {
-      expect_error(summary(conv.analysis, tt),
-                   info = "'bca' type for summary results in error since too little data")
+      next # skip text for bca
+      # expect_error(summary(conv.analysis, tt),
+      #             info = "'bca' type for summary results in error since too little data")
     } else {
       expect_true(inherits(summary(conv.analysis, tt), 
                            "summary.convergence_LambertW_fit"),

@@ -11,7 +11,7 @@
 #' original data length.
 #' @param R number of replicates for the bootstrap. See 
 #' \code{\link[boot]{boot}} for details.
-#' @param ... additional arguments passed to \code{\link{boot}}.
+#' @param ... additional arguments passed to \code{\link[boot]{boot}}.
 #' @return
 #' An object of class \code{"boot"} representing the bootstrap 
 #' analysis of \eqn{\hat{\theta}} (or \eqn{\hat{\tau}}) of 

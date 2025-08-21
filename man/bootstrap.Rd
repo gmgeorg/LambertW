@@ -13,7 +13,7 @@ bootstrap(object, ...)
 \item{object}{an object of class \code{"LambertW_fit"}; usually
 output of \code{\link{IGMM}} or \code{\link{MLE_LambertW}}.}
 
-\item{...}{additional arguments passed to \code{\link{boot}}.}
+\item{...}{additional arguments passed to \code{\link[boot]{boot}}.}
 
 \item{sample.size}{sample size of the bootstrap.  By default, equal to the 
 original data length.}
